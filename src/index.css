@@ -1,20 +1,26 @@
+/* Reset styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  background: linear-gradient(180deg, rgb(117, 81, 194), rgb(255, 255, 255));
-  display: flex;
+  background: #0d2439;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   height: 100vh;
   width: 100vw;
-  justify-content: center;
-  align-items: center;
 }
 
 main {
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  align-items: center; /* Center content horizontally */
+  padding-top: 60px; /* Adjust for Navbar height */
 }
 
+/* Button Styling */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -35,6 +41,7 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* List Styling */
 ul {
   padding-inline-start: 0;
   margin-block-start: 0;
@@ -51,7 +58,7 @@ ul {
 }
 
 li {
-  background-color: white;
+  background-color: #0d2439;
   padding: 8px;
 }
 
@@ -59,7 +66,19 @@ li:hover {
   background: #dadbf9;
 }
 
+/* Link Styling */
 a {
   font-weight: 800;
   text-decoration: none;
+}
+
+/* Spline Viewer Container */
+.spline-container {
+  width: 100%; /* Allow scaling */
+  max-width: 1080px; /* Restrict maximum size */
+  aspect-ratio: 1; /* Maintain 1:1 ratio */
+  margin: 0 auto; /* Center horizontally */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
