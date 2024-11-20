@@ -50,34 +50,64 @@ function App() {
     fetchUser();
   }, [user]);
 
-  return (
-    <div>
-      <Navbar />
-      <main className="main">
-        <h1 className="hero-title">Explore Our Training Classes</h1>
+// Add XP and update the user's data
+const addXP = async (xpToAdd: number) => {
+  if (userData) {
+    try {
+      const currentXP = userData.xp ?? 0; // Use 0 if `xp` is null or undefined
+      const newXP = currentXP + xpToAdd;
+      const newLevel = Math.floor(newXP / 100) + 1; // Example leveling logic
 
-        {/* Display User Info */}
-        {userData && (
-          <section className="user-info">
-            <h2>Welcome, {userData.username}</h2>
-            <p>Level: {userData.level}</p>
-            <p>XP: {userData.xp}</p>
-          </section>
-        )}
+      // Update in the backend
+      const updatedUser = await client.models.User.update({
+        id: userData.id,
+        xp: newXP,
+        level: newLevel,
+      });
 
-        {/* Training Classes */}
-        <section className="classes-section">
-          {classes.map((training, index) => (
-            <div key={index} className="class-box">
-              <h2 className="class-title">{training.title}</h2>
-              <p className="class-description">{training.description}</p>
-              <button className="class-button">Learn More</button>
-            </div>
-          ))}
+      // Check if `updatedUser.data` exists, then update state
+      if (updatedUser?.data) {
+        setUserData(updatedUser.data);
+      } else {
+        console.error('Error: No data returned from update response.');
+      }
+    } catch (error) {
+      console.error('Error adding XP:', error);
+    }
+  } else {
+    console.error('Error: User data is not available.');
+  }
+};
+
+return (
+  <div>
+    <Navbar />
+    <main className="main">
+      <h1 className="hero-title">Explore Our Training Classes</h1>
+
+      {/* Display User Info */}
+      {userData && (
+        <section className="user-info">
+          <h2>Welcome, {userData.username}</h2>
+          <p>Level: {userData.level}</p>
+          <p>XP: {userData.xp}</p>
+          <button onClick={() => addXP(10)} className="xp-button">Add 10 XP</button>
         </section>
-      </main>
-    </div>
-  );
+      )}
+
+      {/* Training Classes */}
+      <section className="classes-section">
+        {classes.map((training, index) => (
+          <div key={index} className="class-box">
+            <h2 className="class-title">{training.title}</h2>
+            <p className="class-description">{training.description}</p>
+            <button className="class-button">Learn More</button>
+          </div>
+        ))}
+      </section>
+    </main>
+  </div>
+);
 }
 
 export default App;
