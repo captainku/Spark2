@@ -1,0 +1,128 @@
+.lesson-container {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+    margin-top: 100px;
+  }
+  
+  .lesson-progress {
+    width: 20%;
+    background-color: #f1f1f1;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .lesson-progress h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #0d2439;
+  }
+  
+  .lesson-progress ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .lesson-progress li {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: #e8e8e8;
+    transition: background-color 0.3s;
+  }
+  
+  .lesson-progress li.active {
+    background-color: #0d2439;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .lesson-progress li:hover {
+    background-color: #cfd8dc;
+  }
+  
+  .lesson-content {
+    flex: 1;
+    padding: 1rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .lesson-content h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #0d2439;
+  }
+  
+  .lesson-content p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+  
+  .navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+  
+  .navigation-buttons button {
+    background-color: #0d2439;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .navigation-buttons button:hover {
+    background-color: #09212e;
+  }
+  
+  .navigation-buttons button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+
+  .lesson-progress ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .lesson-progress li {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  
+  .lesson-progress li.active {
+    background-color: #0d2439;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .lesson-progress li.completed {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .lesson-progress li.locked {
+    background-color: #e8e8e8;
+    color: #aaa;
+  }
+  
+  .lesson-progress li:hover {
+    background-color: #cfd8dc;
+  }
+  
+  .lesson-progress li.locked:hover {
+    background-color: #e8e8e8; /* Prevent hover effect on locked items */
+  }
